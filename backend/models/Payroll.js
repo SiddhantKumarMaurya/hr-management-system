@@ -1,32 +1,32 @@
-// models/Payroll.js
+// backend/models/Payroll.js
 const mongoose = require('mongoose');
 
-const payrollSchema = new mongoose.Schema({
+const PayrollSchema = new mongoose.Schema({
     employee: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Employee',
         required: true
     },
-    grossSalary: {
+    salary: {
         type: Number,
         required: true
     },
-    overtimePay: {
+    deductions: {
+        type: Number,
+        required: true
+    },
+    bonuses: {
         type: Number,
         default: 0
     },
-    taxDeduction: {
+    totalSalary: {
         type: Number,
         required: true
     },
-    netSalary: {
-        type: Number,
-        required: true
-    },
-    paymentDate: {
+    date: {
         type: Date,
         default: Date.now
     }
-}, { timestamps: true });
+});
 
-module.exports = mongoose.model('Payroll', payrollSchema);
+module.exports = mongoose.model('Payroll', PayrollSchema);
